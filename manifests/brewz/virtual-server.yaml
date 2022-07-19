@@ -12,6 +12,9 @@ spec:
     - name: api
       service: api
       port: 8000
+    - name: spa-dark
+      service: spa-dark
+      port: 80
     - name: inventory
       service: inventory
       port: 8002
@@ -22,6 +25,12 @@ spec:
     - path: /
       action:
         pass: spa
+        matches:
+         - conditions:
+           - cookie: "app_version"
+             value: "dark"
+           action:
+             pass: spa-dark      
     - path: /api
       policies:
         - name: rate-limit-policy
