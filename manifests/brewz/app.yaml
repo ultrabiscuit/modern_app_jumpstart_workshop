@@ -200,5 +200,6 @@ ports:
       protocol: TCP
       name: http
 selector:
-     app: spa-dark            
+     app: spa-dark  
+          
 
